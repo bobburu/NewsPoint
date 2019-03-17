@@ -1,34 +1,20 @@
 package models;
 
-import android.graphics.Bitmap;
-
 
 public class Article {
 
     private String mTitle;
     private String mDate;
-    private Bitmap mImage;
-
+    private String mImageUrl;
     private String mWebUrl;
 
-    public Article(String mTitle, String mDate, Bitmap mImage) {
+    public Article() {
+    }
+
+    public Article(String mTitle, String mDate, String mImageUrl, String mWebUrl) {
         this.mTitle = mTitle;
         this.mDate = mDate;
-        this.mImage = mImage;
-    }
-
-    public Article(String mTitle, String mDate, Bitmap mImage, String mWebUrl) {
-        this.mTitle = mTitle;
-        this.mDate = mDate;
-        this.mImage = mImage;
-        this.mWebUrl = mWebUrl;
-    }
-
-    public String getmWebUrl() {
-        return mWebUrl;
-    }
-
-    public void setmWebUrl(String mWebUrl) {
+        this.mImageUrl = mImageUrl;
         this.mWebUrl = mWebUrl;
     }
 
@@ -48,11 +34,19 @@ public class Article {
         this.mDate = mDate;
     }
 
-    public Bitmap getmImage() {
-        return mImage;
+    public String getmImageUrl() {
+        return mImageUrl;
     }
 
-    public void setmImage(Bitmap mImage) {
-        this.mImage = mImage;
+    public void setmImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
+    }
+
+    public String getmWebUrl() {
+        return mWebUrl;
+    }
+
+    public void setmWebUrl(String mWebUrl) {
+        this.mWebUrl = mWebUrl;
     }
 }

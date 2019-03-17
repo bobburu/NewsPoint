@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.android.newspoint.ArticleDetails;
 import com.example.android.newspoint.R;
 
@@ -24,9 +26,13 @@ public class NewsRecAdapter extends RecyclerView.Adapter<NewsRecAdapter.MyViewHo
     private Context mContext;
     private ArrayList<Article> articleArrayList;
 
+    RequestOptions options;
+
     public NewsRecAdapter(Context mContext, ArrayList<Article> articleArrayList) {
         this.mContext = mContext;
         this.articleArrayList = articleArrayList;
+
+        options = new RequestOptions().centerCrop().placeholder(R.drawable.loading_bg).error(R.drawable.empty_bg);
     }
 
     @NonNull
@@ -39,7 +45,9 @@ public class NewsRecAdapter extends RecyclerView.Adapter<NewsRecAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         final int position = i;
-        myViewHolder.articleImage.setImageBitmap(articleArrayList.get(i).getmImage());
+
+        Glide.with(mContext).load(articleArrayList.get(i).getmImageUrl()).apply(options).into(myViewHolder.articleImage);
+
         myViewHolder.articleTitle.setText(articleArrayList.get(i).getmTitle());
         myViewHolder.articleDate.setText(articleArrayList.get(i).getmDate());
 
